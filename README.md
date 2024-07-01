@@ -30,7 +30,7 @@ The model's performance is evaluated using accuracy, precision, recall, and F1-s
 
 ### Collab link
 
-https://colab.research.google.com/drive/1-_2wYDnvjUjo-mykyA0RazL5D2HoQbCM?usp=sharing
+https://colab.research.google.com/drive/1voyvYAJMq4uI4Sx71DGg8npNWdoYvZ76?usp=sharing
 
 
 
