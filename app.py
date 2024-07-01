@@ -12,11 +12,11 @@ df = pd.read_csv('HepatitisCdata.csv')
 df.drop('Unnamed: 0', axis=1, inplace=True)
 
 # Handling missing values
-df['ALP'].replace(np.NaN, df['ALP'].mode()[0], inplace=True)
-df['PROT'].replace(np.NaN, df['PROT'].mode()[0], inplace=True)
-df['ALB'].replace(np.NaN, df['ALB'].mode()[0], inplace=True)
-df['ALT'].replace(np.NaN, df['ALT'].mode()[0], inplace=True)
-df['CHOL'].replace(np.NaN, df['CHOL'].mode()[0], inplace=True)
+df['ALP'].replace(np.nan, df['ALP'].mode()[0], inplace=True)
+df['PROT'].replace(np.nan, df['PROT'].mode()[0], inplace=True)
+df['ALB'].replace(np.nan, df['ALB'].mode()[0], inplace=True)
+df['ALT'].replace(np.nan, df['ALT'].mode()[0], inplace=True)
+df['CHOL'].replace(np.nan, df['CHOL'].mode()[0], inplace=True)
 
 # Label encoding
 df['Category'] = df['Category'].replace({
