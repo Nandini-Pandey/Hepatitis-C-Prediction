@@ -32,5 +32,8 @@ The model's performance is evaluated using accuracy, precision, recall, and F1-s
 
 https://colab.research.google.com/drive/1voyvYAJMq4uI4Sx71DGg8npNWdoYvZ76?usp=sharing
 
+### Webapp link
+https://hepatitis-c-prediction-xflguwu5yvcdrgzyywjhxs.streamlit.app/
+
 
 
