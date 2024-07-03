@@ -53,11 +53,10 @@ naive_bayes_classifier = GaussianNB()
 # Model training
 naive_bayes_classifier.fit(X_train, y_train)
 
-# Streamlit web app interface
 def main():
     st.title('Hepatitis C Diagnosis Predictor')
 
-    # Collect user inputs
+    #  user inputs
     st.sidebar.header('Enter Patient Details:')
     age = st.sidebar.text_input('Age', '0')
     sex = st.sidebar.selectbox('Sex', ['Male', 'Female'])
@@ -72,7 +71,7 @@ def main():
     ggt = st.sidebar.text_input('GGT (Gamma-Glutamyl Transferase)', '0')
     prot = st.sidebar.text_input('PROT (Protein)', '0.0')
 
-    # Prepare user input data
+   
     sex_encoded = 0 if sex == 'Male' else 1
     user_input = {
         'Age': float(age),
@@ -89,36 +88,43 @@ def main():
         'PROT': float(prot)
     }
 
-    # Apply log transformation to user input
+    #  log transformation to user input
     for column in outlier_columns:
         user_input[column] = np.log1p(user_input[column])
 
-    # Debugging: Display user input
+    st.write("""
+Welcome to the Hepatitis C Diagnosis Predictor. This app uses clinical and demographic data to predict the likelihood of different Hepatitis C conditions, including blood donor status, fibrosis, and cirrhosis. Please note that this tool is intended for informational purposes only and should not be used as a substitute for professional medical advice. Please enter the required information below and click 'Predict' to see the results.
+""")
     st.write("User Input:")
     st.write(pd.DataFrame([user_input]))
 
     # Predict button
     if st.button('Predict'):
-        # Predict diagnosis category
+        # diagnosis category
         prediction = naive_bayes_classifier.predict(pd.DataFrame([user_input]))
-        prediction_prob = naive_bayes_classifier.predict_proba(pd.DataFrame([user_input]))
 
-        # Debugging: Display prediction probabilities
-        st.write("Prediction Probabilities:")
-        st.write(prediction_prob)
 
-        # Display prediction result
+        # prediction result
         st.write('### Diagnosis Prediction:')
         
         category=prediction[0]
         if category==0:
-            st.write(f'Predicted Category: Blood Donor/suspect Blood Donor')
+            st.write(f'Predicted Category: Blood Donor/suspect Blood Donor : No signs of Hepatitis C infection.')
         elif category==1:
-           st.write(f'Predicted Category: Hepatitis')
+           st.write(f'Predicted Category: Hepatitis:Possible signs of Hepatitis C infection.')
         elif category==2:
-            st.write(f'Predicted Category: Fibrosis')
+            st.write(f'Predicted Category: Fibrosis:Early-stage liver scarring.')
         elif category==3:
-            st.write(f'Predicted Category: Cirrhosis')
+            st.write(f'Predicted Category: Cirrhosis: Advanced liver scarring. Consult a healthcare professional for further evaluation.')
+    
+    image_url = "https://sa1s3optim.patientpop.com/assets/images/provider/photos/2329181.jpg"
+    st.image(image_url, caption='Stages of Hepatitis C', use_column_width=True)
 
+  
 if __name__ == '__main__':
     main()
+
+   
+
+
+      
