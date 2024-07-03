@@ -27,6 +27,8 @@ A Gaussian Naive Bayes classifier is employed for predicting the diagnosis categ
 ### Evaluation
 The model's performance is evaluated using accuracy, precision, recall, and F1-score. The classification report provides detailed insights into the model's effectiveness.
 
+![Accuracy](accuracy.png)
+
 
 ### Collab link
 
